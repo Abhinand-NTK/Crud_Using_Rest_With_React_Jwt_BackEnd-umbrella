@@ -61,7 +61,6 @@ class MyTokenObtainPairView(TokenObtainPairView):
 
 class UserRegister(CreateAPIView):
     serializer_class = UserSerializer
-
 class UserList(ListCreateAPIView):
     queryset = UserAccount.objects.all().exclude(is_superuser=True)
     serializer_class = UserSerializer
