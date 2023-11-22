@@ -47,6 +47,7 @@ class UserAccount(AbstractBaseUser):
         is_active = models.BooleanField(default=True)
         is_staff = models.BooleanField(default=True )
         is_superuser =models.BooleanField(default=False)
+        user_image = models.ImageField(upload_to='profile',blank=True,null=True)
 
         objects = UserManager()
 

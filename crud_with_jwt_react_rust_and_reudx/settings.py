@@ -152,5 +152,7 @@ SIMPLE_JWT = {
 
 AUTH_USER_MODEL = "users.UserAccount"
 
-# APPEND_SLASH=False
+# APPEND_SLASH=False   // For the Route settings
+
+STATIC_URL = 'static/'
 
