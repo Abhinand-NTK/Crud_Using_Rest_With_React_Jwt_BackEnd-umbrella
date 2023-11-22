@@ -78,6 +78,7 @@ class UserSerializer(ModelSerializer):
         print("--------update-----------")
         instance.id = validated_data.get('userId', instance.id)
         instance.first_name = validated_data.get('first_name', instance.first_name)
+        instance.last_name = validated_data.get('last_name', instance.last_name)
         instance.email = validated_data.get('email', instance.email)
         # Update other fields as needed
         instance.save()
