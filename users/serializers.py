@@ -33,10 +33,11 @@ class UserSerializer(ModelSerializer):
         instance.first_name = validated_data.get('first_name', instance.first_name)
         instance.last_name = validated_data.get('last_name', instance.last_name)
         instance.email = validated_data.get('email', instance.email)
+        instance.is_active = validated_data.get('is_active', instance.is_active)
         # Update other fields as needed
         instance.save()
         return instance
-class myTokenObtainPairSerializer(TokenObtainPairSerializer):
+class myTokenObtainPairSerializer(TokenObtainPairSerializer):   
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
@@ -44,6 +45,7 @@ class myTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['first_name'] = user.first_name
         token['email'] = user.email
         token['last_name'] = user.last_name
+        token['is_active'] = user.is_active 
         if user.is_superuser:
             token['is_admin'] = user.is_superuser
         else:
