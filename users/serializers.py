@@ -8,7 +8,7 @@ from django.contrib.auth.hashers import make_password
 class UserSerializer(ModelSerializer):
     class Meta:
         model = UserAccount
-        fields = ['id', 'first_name', 'email', 'last_name','password','is_active']
+        fields = ['id','user_image','first_name', 'email', 'last_name','password','is_active']
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -18,7 +18,7 @@ class UserSerializer(ModelSerializer):
 
         print(validated_data)
 
-        print("!!!!!!!!!!!!!!!!!!!!!!")
+        print("!!!!!!!!!!!!!!!!!!!!!!") 
         password = validated_data.pop('password', None)
         instance = self.Meta.model.objects.create(**validated_data)
         if password is not None:
@@ -30,6 +30,7 @@ class UserSerializer(ModelSerializer):
         # Your custom update logic here
         print("--------update-----------")
         instance.id = validated_data.get('userId', instance.id)
+        instance.user_image = validated_data.get('user_image', instance.user_image)
         instance.first_name = validated_data.get('first_name', instance.first_name)
         instance.last_name = validated_data.get('last_name', instance.last_name)
         instance.email = validated_data.get('email', instance.email)
